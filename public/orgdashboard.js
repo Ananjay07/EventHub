@@ -72,22 +72,35 @@ async function fetchEvents() {
     const eventsGrid = document.getElementById('eventsGrid');
     eventsGrid.innerHTML = ''; // Clear previous events
 
-    events.forEach(event => {
+    events.forEach((event, index) => {
       const card = document.createElement('div');
-      card.classList.add('event-card');
+      card.classList.add('event-card', 'animate-on-scroll');
+      card.style.transitionDelay = `${(index % 3) * 0.1}s`;
+      
       card.innerHTML = `
-        <h3>${event.title}</h3>
-        <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
-        <p><strong>Venue:</strong> ${event.venue}</p>
-        <p><strong>Type:</strong> ${event.category}</p>
-        <p><strong>Coordinator:</strong> ${event.coordinatorName}</p>
-        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
-            <p><strong>Registered Students:</strong> ${event.rsvpCount || 0}</p>
-            <button class="secondary-btn btn-small" style="width: 100%; margin-top: 10px;" onclick="viewRsvps('${event._id}')">View Students</button>
+        <div class="event-details">
+            <span class="event-date">${new Date(event.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+            <h3>${event.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 0.5rem;"><strong>Venue:</strong> ${event.venue}</p>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 0.5rem;"><strong>Category:</strong> ${event.category}</p>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem;"><strong>Coordinator:</strong> ${event.coordinatorName}</p>
+            
+            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                   <span style="font-size: 0.75rem; color: var(--text-muted); display: block; text-transform: uppercase; letter-spacing: 0.5px;">Registered</span>
+                   <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">${event.rsvpCount || 0}</span>
+                </div>
+                <button class="secondary-btn" style="padding: 0.5rem 1rem;" onclick="viewRsvps('${event._id}')">View List</button>
+            </div>
         </div>
       `;
       eventsGrid.appendChild(card);
     });
+
+    // Handle animations for new elements
+    if (window.observeScrollAnimations) {
+        window.observeScrollAnimations();
+    }
 
   } catch (err) {
     console.error('Error fetching events:', err);

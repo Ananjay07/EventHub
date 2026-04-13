@@ -3,8 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Organizer Dashboard</title>
+  <title>Organizer Dashboard | EventHub</title>
   <link rel="stylesheet" href="main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .students-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .students-table th, .students-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .students-table th {
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+    }
+  </style>
 </head>
 <body>
 
@@ -14,16 +37,21 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="#">My Events</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#">Resources</a></li>
     </ul>
     <button class="login-btn" onclick="logout()">Logout</button>
   </nav>
 
   <!-- Main Dashboard -->
   <main class="dashboard">
-    <section class="dashboard-header">
-      <h1 id="welcomeMsg">Welcome, Organizer!</h1>
-        <button onclick="openEventForm()" class="primary-btn">Add New Event</button>
+    <section class="dashboard-header animate-on-scroll">
+      <div>
+        <h1 id="welcomeMsg" style="margin-bottom: 0.5rem;">Welcome, Organizer!</h1>
+        <p style="color: var(--text-muted);">Manage your events and track attendee registrations.</p>
+      </div>
+      <button onclick="openEventForm()" class="primary-btn">
+        <span>+</span> Add New Event
+      </button>
     </section>
 
     <!-- Events Grid -->
@@ -35,24 +63,29 @@
   <!-- Event Form Modal -->
   <div class="event-form-modal" id="eventFormModal">
       <div class="event-form-container">
-          <h2>Add New Event</h2>
+          <h2>Create New Event</h2>
+          <p style="text-align: center; color: var(--text-muted); margin-top: -2rem; margin-bottom: 2rem;">Fill in the details below to publish your event.</p>
           <form id="addEventForm">
               <input type="text" id="eventTitle" placeholder="Event Title" required />
-              <input type="date" id="eventDate" required />
-              <input type="text" id="eventVenue" placeholder="Venue" required />
+              <div style="display: flex; gap: 1rem;">
+                <input type="date" id="eventDate" required style="flex: 1;" />
+                <input type="text" id="eventVenue" placeholder="Venue Location" required style="flex: 1;" />
+              </div>
               <select id="eventCategory" required>
-                  <option value="">Select Type</option>
+                  <option value="">Select Category</option>
                   <option value="Cultural">Cultural</option>
                   <option value="Technical">Technical</option>
                   <option value="Sports">Sports</option>
                   <option value="Exhibition">Exhibition</option>
               </select>
-              <textarea id="eventDescription" placeholder="Description" rows="4" required></textarea>
-              <input type="text" id="coordinatorName" placeholder="Coordinator Name" required />
-              <input type="email" id="coordinatorEmail" placeholder="Coordinator Email" required />
-              <div class="form-buttons">
-                  <button type="submit" class="primary-btn">Save</button>
-                  <button type="button" class="secondary-btn" onclick="closeEventForm()">Cancel</button>
+              <textarea id="eventDescription" placeholder="Event Description (What's it about?)" rows="4" required></textarea>
+              <div style="display: flex; gap: 1rem;">
+                <input type="text" id="coordinatorName" placeholder="Coordinator Name" required style="flex: 1;" />
+                <input type="email" id="coordinatorEmail" placeholder="Coordinator Email" required style="flex: 1;" />
+              </div>
+              <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                  <button type="submit" class="primary-btn" style="flex: 2;">Publish Event</button>
+                  <button type="button" class="secondary-btn" style="flex: 1;" onclick="closeEventForm()">Cancel</button>
               </div>
           </form>
       </div>
@@ -60,27 +93,32 @@
 
   <!-- RSVP Table Modal -->
   <div class="event-form-modal" id="rsvpTableModal">
-      <div class="event-form-container" style="width: 600px; max-width: 90%; max-height: 80vh; overflow-y: auto;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-              <h2 style="margin: 0;">Registered Students</h2>
-              <button class="secondary-btn" onclick="closeRsvpTable()" style="padding: 5px 10px;">Close X</button>
+      <div class="event-form-container" style="max-width: 800px; max-height: 90vh; overflow-y: auto;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+              <h2 style="margin: 0; text-align: left;">Registered Students</h2>
+              <button class="secondary-btn" onclick="closeRsvpTable()" style="padding: 0.5rem 1rem;">Close</button>
           </div>
-          <table id="studentsTable" class="students-table">
-              <thead>
-                  <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Phone</th>
-                  </tr>
-              </thead>
-              <tbody id="studentsTableBody">
-                  <!-- Rows injected logically -->
-              </tbody>
-          </table>
-          <p id="noStudentsMsg" style="text-align: center; color: #777; display: none;">No students have registered yet.</p>
+          <p id="noStudentsMsg" style="text-align: center; color: var(--text-muted); padding: 2rem; display: none; background: var(--primary-light); border-radius: var(--radius-md);">
+            No students have registered for this event yet.
+          </p>
+          <div id="tableWrapper" style="overflow-x: auto;">
+            <table id="studentsTable" class="students-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody id="studentsTableBody">
+                    <!-- Rows injected logically -->
+                </tbody>
+            </table>
+          </div>
       </div>
   </div>
   
   <script src="orgdashboard.js"></script>
+  <script src="animations.js"></script>
 </body>
 </html>

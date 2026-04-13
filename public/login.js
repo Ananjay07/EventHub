@@ -2,12 +2,14 @@
 function showSignup() {
   document.querySelector('.login').classList.add('hidden');
   document.querySelector('.signup').classList.remove('hidden');
+  if (window.observeScrollAnimations) window.observeScrollAnimations();
 }
 
 // Show login form
 function showLogin() {
   document.querySelector('.signup').classList.add('hidden');
   document.querySelector('.login').classList.remove('hidden');
+  if (window.observeScrollAnimations) window.observeScrollAnimations();
 }
 
 // Login form handler

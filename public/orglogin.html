@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Organizer Login & Signup</title>
+  <title>Organizer Login | EventHub</title>
   <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
@@ -14,34 +17,39 @@
       <li><a href="#">Services</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
-    <a href="index.html"><button class="login-btn">Login</button></a>
+    <a href="index.html"><button class="login-btn">Back to Home</button></a>
   </nav>
 
   <main class="auth-wrapper">
     <!-- Organizer Login Form -->
-    <div class="form-box login">
+    <div class="form-box login animate-on-scroll">
       <h2>Organizer Login</h2>
       <form id="organizerLoginForm">
-        <input type="email" id="organizerLoginEmail" placeholder="Email" required />
+        <input type="email" id="organizerLoginEmail" placeholder="Work Email" required />
         <input type="password" id="organizerLoginPassword" placeholder="Password" required />
-        <button type="submit">Login</button>
-        <p>Don't have an account? <span class="toggle-link" onclick="showSignup()">Sign Up</span></p>
+        <button type="submit" class="primary-btn">Login</button>
+        <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted);">
+          Don't have an organizer account? <span class="toggle-link" style="color: var(--primary); cursor: pointer; font-weight: 600;" onclick="showSignup()">Sign Up</span>
+        </p>
       </form>
     </div>
 
     <!-- Organizer Signup Form -->
-    <div class="form-box signup hidden">
+    <div class="form-box signup hidden animate-on-scroll">
       <h2>Organizer Sign Up</h2>
       <form id="organizerSignupForm">
-        <input type="text" id="organizerSignupName" placeholder="Name" required />
-        <input type="email" id="organizerSignupEmail" placeholder="Email" required />
-        <input type="password" id="organizerSignupPassword" placeholder="Password" required />
-        <button type="submit">Sign Up</button>
-        <p>Already have an account? <span class="toggle-link" onclick="showLogin()">Login</span></p>
+        <input type="text" id="organizerSignupName" placeholder="Organization Name" required />
+        <input type="email" id="organizerSignupEmail" placeholder="Organization Email" required />
+        <input type="password" id="organizerSignupPassword" placeholder="Create Password" required />
+        <button type="submit" class="primary-btn">Sign Up</button>
+        <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted);">
+          Already have an account? <span class="toggle-link" style="color: var(--primary); cursor: pointer; font-weight: 600;" onclick="showLogin()">Login</span>
+        </p>
       </form>
     </div>
   </main>
 
   <script src="orglogin.js"></script>
+  <script src="animations.js"></script>
 </body>
 </html>

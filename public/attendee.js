@@ -28,33 +28,51 @@ async function fetchEvents() {
       return;
     }
 
-    events.forEach(event => {
+    events.forEach((event, index) => {
       const isRegistered = rsvpEventIds.includes(event._id);
       
       const card = document.createElement('div');
-      card.classList.add('event-card');
+      card.classList.add('event-card', 'animate-on-scroll');
+      card.style.transitionDelay = `${(index % 3) * 0.1}s`; // Stagger effect
+      
       card.innerHTML = `
-        <h3 style="color: #7f56d9; margin-bottom: 10px;">${event.title}</h3>
-        <p style="margin-bottom: 5px; color: #444;"><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
-        <p style="margin-bottom: 5px; color: #444;"><strong>Venue:</strong> ${event.venue}</p>
-        <p style="margin-bottom: 15px; color: #444;"><strong>Type:</strong> ${event.category}</p>
-        <div style="margin-top: auto; border-top: 1px solid #eee; padding-top: 15px; display: flex; gap: 10px;">
-            <button class="secondary-btn btn-small" style="flex: 1;" onclick="openDetailsModal('${event._id}')">Details</button>
-            ${isRegistered ? 
-              `<button class="secondary-btn btn-small" style="flex: 1; border-color: #d9534f; color: #d9534f;" onclick="deregister('${event._id}')">De-register</button>` : 
-              `<button class="primary-btn btn-small" style="flex: 1;" onclick="openRSVPModal('${event._id}')">RSVP</button>`
-            }
+        <div class="event-image" style="background-image: linear-gradient(135deg, ${getRandomGradient()});"></div>
+        <div class="event-details">
+            <span class="event-date">${new Date(event.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+            <h3>${event.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 0.5rem;"><strong>Venue:</strong> ${event.venue}</p>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem;"><strong>Category:</strong> ${event.category}</p>
+            <div style="display: flex; gap: 0.75rem;">
+                <button class="secondary-btn" style="flex: 1; padding: 0.5rem;" onclick="openDetailsModal('${event._id}')">Details</button>
+                ${isRegistered ? 
+                  `<button class="secondary-btn" style="flex: 1; padding: 0.5rem; border-color: #d9534f; color: #d9534f;" onclick="deregister('${event._id}')">De-register</button>` : 
+                  `<button class="primary-btn" style="flex: 1; padding: 0.5rem;" onclick="openRSVPModal('${event._id}')">RSVP</button>`
+                }
+            </div>
         </div>
       `;
-      // Flex styles to push buttons to bottom
-      card.style.display = 'flex';
-      card.style.flexDirection = 'column';
       
       container.appendChild(card);
     });
+
+    // Handle animations for new elements
+    if (window.observeScrollAnimations) {
+        window.observeScrollAnimations();
+    }
   } catch (err) {
     console.error('Error fetching events:', err);
   }
+}
+
+function getRandomGradient() {
+    const gradients = [
+        '#a88be8 0%, #7f56d9 100%',
+        '#f7ce68 0%, #fbab7e 100%',
+        '#84fab0 0%, #8fd3f4 100%',
+        '#fa709a 0%, #fee140 100%',
+        '#6a11cb 0%, #2575fc 100%'
+    ];
+    return gradients[Math.floor(Math.random() * gradients.length)];
 }
 
 // Display Event Details Modal

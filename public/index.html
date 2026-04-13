@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EventHub</title>
+  <title>EventHub | Discover & Plan Unforgettable Events</title>
   <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
@@ -14,122 +17,82 @@
       <li><a href="#">Services</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
-    <a href="login.html"><button class="login-btn">Login</button></a>
+    <a href="login.html" id="navLoginBtn"><button class="login-btn">Login</button></a>
   </nav>
 
-<section class="hero">
-    <div class="hero-content">
-      <h1><center>Welcome to <span>EventHub</span></center></h1>
-      <p><center>Whether you're planning a grand celebration or attending one,<br> EventHub helps you make it memorable.</center></p>
-      <div class="hero-buttons">
+  <section class="hero">
+    <div class="hero-content animate-on-scroll">
+      <h1 id="heroTitle">Welcome to <span>EventHub</span></h1>
+      <p>Whether you're planning a grand celebration or attending one, EventHub helps you make it memorable with seamless planning and discovery.</p>
+      <div class="hero-buttons" id="heroButtons">
         <a href="orglogin.html"><button class="primary-btn">I'm an Organizer</button></a>
         <a href="login.html"><button class="secondary-btn">I'm an Attendee</button></a>
       </div>
     </div>
   </section>
   
-  <!-- Optional: About Section -->
-  <section class="about">
+  <section class="about animate-on-scroll">
     <h2>What We Do</h2>
-    <p>EventHub connects event organizers and attendees through a simple, intuitive platform. Organizers can easily list events, manage RSVPs, and communicate with guests. Attendees can browse upcoming events, register, and stay informed.</p>
+    <p class="section-subtitle">Connecting event organizers and attendees through a simple, intuitive platform designed for excellence.</p>
+    <div style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-muted); font-size: 1.1rem;">
+      <p>Organizers can easily list events, manage RSVPs, and communicate with guests. Attendees can browse upcoming events, register, and stay informed with real-time updates.</p>
+    </div>
   </section>
   
-  <!-- Optional: Features Section -->
   <section class="features">
-    <div class="feature-card">
+    <div class="feature-card animate-on-scroll">
       <h3>🎉 Create Events</h3>
-      <p>Plan, publish, and manage your events effortlessly.</p>
+      <p>Plan, publish, and manage your events effortlessly with our comprehensive toolset set for organizers.</p>
     </div>
-    <div class="feature-card">
+    <div class="feature-card animate-on-scroll" style="transition-delay: 0.1s;">
       <h3>📅 RSVP Management</h3>
-      <p>Track attendees and manage confirmations in real-time.</p>
+      <p>Track attendees and manage confirmations in real-time with an intuitive dashboard and automated alerts.</p>
     </div>
-    <div class="feature-card">
+    <div class="feature-card animate-on-scroll" style="transition-delay: 0.2s;">
       <h3>💬 Instant Updates</h3>
-      <p>Keep your guests informed with notifications and alerts.</p>
+      <p>Keep your guests informed with notifications and alerts. Never miss a beat with our instant messaging system.</p>
     </div>
   </section>
   
-
-  <!-- Trending Events Section -->
   <section class="trending">
-    <h2>🔥 Trending Events</h2>
-    <p class="section-subtitle">Discover what's happening right now around you.</p>
+    <h2 class="animate-on-scroll">🔥 Trending Events</h2>
+    <p class="section-subtitle animate-on-scroll">Discover what's happening right now around you.</p>
     <div class="trending-grid">
-      <div class="event-card">
-        <div class="event-image img-1"></div>
+      <div class="event-card animate-on-scroll">
+        <div class="event-image img-1" style="background-image: linear-gradient(135deg, #a88be8 0%, #7f56d9 100%);"></div>
         <div class="event-details">
           <span class="event-date">Oct 15, 2026</span>
           <h3>Global Tech Summit</h3>
-          <p>Join leading innovators and developers for a 3-day tech extravaganza.</p>
-          <button class="secondary-btn btn-small">View Details</button>
+          <p>Join leading innovators and developers for a 3-day tech extravaganza exploring the future of AI.</p>
+          <button class="secondary-btn" style="margin-top: 1.5rem; padding: 0.5rem 1rem; font-size: 0.875rem;">View Details</button>
         </div>
       </div>
-      <div class="event-card">
-        <div class="event-image img-2"></div>
+      <div class="event-card animate-on-scroll" style="transition-delay: 0.1s;">
+        <div class="event-image img-2" style="background-image: linear-gradient(135deg, #f7ce68 0%, #fbab7e 100%);"></div>
         <div class="event-details">
           <span class="event-date">Nov 02, 2026</span>
           <h3>Summer Music Fest</h3>
-          <p>Experience an unforgettable weekend of live music and dancing.</p>
-          <button class="secondary-btn btn-small">View Details</button>
+          <p>Experience an unforgettable weekend of live music, art installations, and dancing under the stars.</p>
+          <button class="secondary-btn" style="margin-top: 1.5rem; padding: 0.5rem 1rem; font-size: 0.875rem;">View Details</button>
         </div>
       </div>
-      <div class="event-card">
-        <div class="event-image img-3"></div>
+      <div class="event-card animate-on-scroll" style="transition-delay: 0.2s;">
+        <div class="event-image img-3" style="background-image: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);"></div>
         <div class="event-details">
           <span class="event-date">Dec 10, 2026</span>
           <h3>Startup Pitch Night</h3>
-          <p>Watch aspiring entrepreneurs pitch their world-changing ideas.</p>
-          <button class="secondary-btn btn-small">View Details</button>
+          <p>Watch aspiring entrepreneurs pitch their world-changing ideas to a panel of top-tier investors.</p>
+          <button class="secondary-btn" style="margin-top: 1.5rem; padding: 0.5rem 1rem; font-size: 0.875rem;">View Details</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- How It Works Section -->
-  <section class="how-it-works">
-    <h2>⚙️ How It Works</h2>
-    <p class="section-subtitle">Your journey from planning to partying in 3 easy steps.</p>
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Create or Discover</h3>
-        <p>Organizers can list events in minutes. Attendees can effortlessly browse exciting upcoming experiences.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Connect & RSVP</h3>
-        <p>Secure your spot instantly with one-click RSVPs. Organizers can manage guest lists with zero hassle.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Enjoy the Experience</h3>
-        <p>Stay updated with instant announcements, connect with others, and have an amazing time!</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <h2>⭐ What People Say</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <p class="quote">"EventHub made organizing our university tech conference a breeze! Managing 500+ RSVPs was never this easy."</p>
-        <span class="author">- Jane Doe, Organizer</span>
-      </div>
-      <div class="testimonial-card">
-        <p class="quote">"I love how easy it is to find local events and claim my spot. The instant updates saved me multiple times!"</p>
-        <span class="author">- John Smith, Attendee</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-brand">
         <h3>Event<span>Hub</span></h3>
-        <p>Making every event a memorable experience.</p>
+        <p>Making every event a memorable experience. Your all-in-one destination for event discovery and management.</p>
       </div>
       <div class="footer-links">
         <h4>Quick Links</h4>
@@ -150,6 +113,7 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="home.js"></script>
+  <script src="animations.js"></script>
 </body>
 </html>
