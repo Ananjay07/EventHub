@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Events - EventHub</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">Event<span>Hub</span></div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Explore</a></li>
+      <li><a href="#">My RSVPs</a></li>
+    </ul>
+    <button class="login-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Event Section -->
+  <main class="dashboard" style="background: transparent; padding-top: 20px;">
+    <h2 style="color: #7f56d9; text-align: center; margin-bottom: 30px;">Available Events</h2>
+    <section class="events-grid" id="eventContainer">
+        <!-- Cards injected dynamically -->
+    </section>
+  </main>
+
+  <!-- Event Details Modal -->
+  <div class="event-form-modal" id="eventDetailsModal">
+    <div class="event-form-container" style="max-width: 500px;">
+        <h2 id="detailTitle" style="margin-bottom: 20px;">Event Title</h2>
+        <div style="font-size: 16px; color: #444; line-height: 1.6;">
+            <p><strong><span style="font-size: 20px;">📅</span> Date:</strong> <span id="detailDate"></span></p>
+            <p><strong><span style="font-size: 20px;">📌</span> Venue:</strong> <span id="detailVenue"></span></p>
+            <p><strong><span style="font-size: 20px;">🏷️</span> Category:</strong> <span id="detailCategory"></span></p>
+            <p><strong><span style="font-size: 20px;">👤</span> Coordinator:</strong> <span id="detailCoordinator"></span></p>
+            <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;" />
+            <p><strong>Description:</strong></p>
+            <p id="detailDescription" style="margin-top: 5px; color: #666;"></p>
+        </div>
+        <button class="primary-btn" style="width: 100%; margin-top: 25px;" onclick="closeDetailsModal()">Close Details</button>
+    </div>
+  </div>
+
+  <!-- RSVP Modal -->
+  <div id="rsvpModal" class="rsvp-modal">
+    <div class="rsvp-form-container">
+      <h2>RSVP for Event</h2>
+      <form onsubmit="submitRSVP(event)">
+        <input type="hidden" id="eventId">
+        <input type="text" id="userName" placeholder="Your Name" required />
+        <input type="email" id="userEmail" placeholder="Your Email" required />
+        <input type="tel" id="userMobile" placeholder="Your Mobile Number" required />
+
+        <div class="form-buttons">
+          <button type="submit" class="primary-btn">Submit</button>
+          <button type="button" class="secondary-btn" onclick="closeRSVPModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="attendee.js"></script>
+</body>
+</html>

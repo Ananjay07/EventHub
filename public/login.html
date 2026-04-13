@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login & Signup</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Event<span>Hub</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <a href="index.html"><button class="login-btn">Login</button></a>
+  </nav>
+
+  <main class="auth-wrapper">
+    <div class="form-box login">
+      <h2>Attendee Login</h2>
+      <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <button type="submit">Login</button>
+        <p>Don't have an account? <span class="toggle-link" onclick="showSignup()">Sign Up</span></p>
+      </form>
+    </div>
+
+    <div class="form-box signup hidden">
+      <h2>Sign Up</h2>
+      <form id="signupForm">
+        <input type="text" id="signupName" placeholder="Name" required />
+        <input type="email" id="signupEmail" placeholder="Email" required />
+        <input type="password" id="signupPassword" placeholder="Password" required />
+        <button type="submit">Sign Up</button>
+        <p>Already have an account? <span class="toggle-link" onclick="showLogin()">Login</span></p>
+      </form>
+    </div>
+  </main>
+
+<script src="login.js"></script>
+</body>
+</html>

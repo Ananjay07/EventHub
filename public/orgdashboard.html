@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Organizer Dashboard</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Event<span>Hub</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">My Events</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="login-btn" onclick="logout()">Logout</button>
+  </nav>
+
+  <!-- Main Dashboard -->
+  <main class="dashboard">
+    <section class="dashboard-header">
+      <h1 id="welcomeMsg">Welcome, Organizer!</h1>
+        <button onclick="openEventForm()" class="primary-btn">Add New Event</button>
+    </section>
+
+    <!-- Events Grid -->
+    <section class="events-grid" id="eventsGrid">
+      <!-- Event cards will be dynamically inserted here -->
+    </section>
+  </main>
+
+  <!-- Event Form Modal -->
+  <div class="event-form-modal" id="eventFormModal">
+      <div class="event-form-container">
+          <h2>Add New Event</h2>
+          <form id="addEventForm">
+              <input type="text" id="eventTitle" placeholder="Event Title" required />
+              <input type="date" id="eventDate" required />
+              <input type="text" id="eventVenue" placeholder="Venue" required />
+              <select id="eventCategory" required>
+                  <option value="">Select Type</option>
+                  <option value="Cultural">Cultural</option>
+                  <option value="Technical">Technical</option>
+                  <option value="Sports">Sports</option>
+                  <option value="Exhibition">Exhibition</option>
+              </select>
+              <textarea id="eventDescription" placeholder="Description" rows="4" required></textarea>
+              <input type="text" id="coordinatorName" placeholder="Coordinator Name" required />
+              <input type="email" id="coordinatorEmail" placeholder="Coordinator Email" required />
+              <div class="form-buttons">
+                  <button type="submit" class="primary-btn">Save</button>
+                  <button type="button" class="secondary-btn" onclick="closeEventForm()">Cancel</button>
+              </div>
+          </form>
+      </div>
+  </div>
+
+  <!-- RSVP Table Modal -->
+  <div class="event-form-modal" id="rsvpTableModal">
+      <div class="event-form-container" style="width: 600px; max-width: 90%; max-height: 80vh; overflow-y: auto;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <h2 style="margin: 0;">Registered Students</h2>
+              <button class="secondary-btn" onclick="closeRsvpTable()" style="padding: 5px 10px;">Close X</button>
+          </div>
+          <table id="studentsTable" class="students-table">
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                  </tr>
+              </thead>
+              <tbody id="studentsTableBody">
+                  <!-- Rows injected logically -->
+              </tbody>
+          </table>
+          <p id="noStudentsMsg" style="text-align: center; color: #777; display: none;">No students have registered yet.</p>
+      </div>
+  </div>
+  
+  <script src="orgdashboard.js"></script>
+</body>
+</html>
